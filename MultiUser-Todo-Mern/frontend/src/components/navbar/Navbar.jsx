@@ -18,11 +18,11 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav ms-auto">
                         <Link className="nav-link active" to="/">Home</Link>
-                        <Link className="nav-link active" to="#">Todo</Link>
+                        <Link className="nav-link active" to="/todo">Todo</Link>
                         <Link className="nav-link active" to="/aboutus">About Us</Link>
-                        <Link className="nav-link active" to="/signup">SignUp</Link>
-                        <Link className="nav-link active" to="/signin">SignIn</Link>
-                        <Link className="nav-link active" href="/logout">Logout</Link>
+                        <Link className="nav-link active auth-btn" to="/signup">SignUp</Link>
+                        <Link className="nav-link active auth-btn" to="/signin">SignIn</Link>
+                        <Link className="nav-link active auth-btn" href="/logout">Log Out</Link>
                     </div>
                 </div>
                 {/* <img className="profile-image navbar-nav ms-auto" src="/assets/user-profile-icon.png" alt="Profile" /> */}

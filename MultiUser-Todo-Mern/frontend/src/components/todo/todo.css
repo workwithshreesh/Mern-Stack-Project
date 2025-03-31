@@ -1,0 +1,14 @@
+.todo{
+    width: 100%;
+    height: 90vh;
+}
+
+.todo-inputs{
+    border: none;
+    outline: none;
+}
+
+.todo-inputs-div{
+    border: 1px solid black;
+    border-radius: 10px;
+}

@@ -7,3 +7,18 @@
 .navbar-brand{
     color: rgba(240, 0, 0, 0.87);
 }
+
+.auth-btn {
+    background-color: rgba(240, 0, 0, 0.87);
+    color: white !important;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 5px;
+    padding: none;
+}
+
+
+#textarea{
+    display: none;
+}
