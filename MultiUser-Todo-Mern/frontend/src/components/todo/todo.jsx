@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TodoCard from "../todo-card/TodoCards";
 import "./todo.css"
 
 const show = () => {
@@ -23,7 +24,7 @@ const Todo = () => {
 
     const submit = () => {
 
-        setArray( ...Array , Inputs );
+        setArray( [...Array , Inputs] );
         
         setInputs({
             title: "",
@@ -57,6 +58,17 @@ const Todo = () => {
                 <div className="w-50 d-flex justify-content-end my-3">
                     <button onClick={submit} className="add-bttn px-2 py-1">Add</button>
                 </div>
+            </div>
+            <div className="todo-body">
+                <div className="container">
+                    {
+                        Array && Array.map((item,index) => (
+                            <>
+                            <TodoCard />
+                            </>
+                        ))
+                    }
+                </div> 
             </div>
         </div>
     );
