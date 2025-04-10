@@ -19,18 +19,23 @@ const Todo = () => {
 
     const change = (event) => {
         const { name, value } = event.target;
-        setInputs({ ...Inputs, [name]: value}) 
+        setInputs({ ...Inputs, [name]: value })
     }
 
     const submit = () => {
 
-        setArray( [...Array , Inputs] );
-        
+        setArray([...Array, Inputs]);
+
         setInputs({
             title: "",
             body: ""
         });
 
+    }
+
+    const del = (id) => {
+        Array.splice(id,"1");
+        setArray([...Array])
     }
 
     return (
@@ -60,15 +65,17 @@ const Todo = () => {
                 </div>
             </div>
             <div className="todo-body">
-                <div className="container">
-                    {
-                        Array && Array.map((item,index) => (
-                            <>
-                            <TodoCard />
-                            </>
-                        ))
-                    }
-                </div> 
+                <div className="container-fluid">
+                    <div className="row">
+                        {
+                            Array && Array.map((item, index) => (
+                                <div className="col-lg-3 col-10 mx-5 my-2" key={index}>
+                                    <TodoCard title={item.title} body={item.body} id={index} delid={ del } />
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     );
