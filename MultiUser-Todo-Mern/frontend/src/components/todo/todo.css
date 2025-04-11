@@ -2,6 +2,7 @@
     width: 100%;
     min-height: 80vh;
     max-height: auto;
+    position: relative;
 }
 
 .todo-inputs{
@@ -47,4 +48,19 @@
 
 .card-icon-head:hover{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.todo-update{
+    width: 100%;
+    height: 80vh;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    background-color: blanchedalmond;
+    display: none;
+}
+
+.update{
+    height: 100%;
 }
