@@ -15,11 +15,11 @@ router.post("/register", async (req,res)=>{
         const hashpassword = bcrypt.hashSync(password);
         const user = new User({email, username, password: hashpassword});
         await user.save().then(()=>
-            res.status(200).json({user: user})
+            res.status(200).json({message:"User register successfull",user: user})
         );
 
     } catch (error) {
-        res.status(400).json({message:"User not exist"});
+        res.status(200).json({message:"User alredy exist"});
     }
 });
 
@@ -29,11 +29,11 @@ router.post("/signin",async (req,res)=>{
     try{
         const user = await User.findOne({email: req.body.email});
     if(!user){
-        res.status(401).json({message: "Please signup first"})
+        return res.status(401).json({message: "Please signup first"})
     }
-    const ispassword = bcrypt.compareSync(req.body.password, user.password);
+    const ispassword = await bcrypt.compare(req.body.password, user.password);
     if(!ispassword){
-        res.status(401).json({message: "Your password is not valid"});
+        return res.status(401).json({message: "Your password is not valid"});
     }
 
     const token = jwt.sign(
@@ -43,10 +43,10 @@ router.post("/signin",async (req,res)=>{
     );
 
     const {password, ...others} = user._doc;
-    res.status(200).json({others, token})
+    return res.status(200).json({others, token, message:"Login successful!"})
 
     } catch (error){
-        res.status(400).json({message: "user not exist"});
+        return res.status(400).json({message: "user not exist"});
     }
 });
 

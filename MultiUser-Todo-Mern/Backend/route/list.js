@@ -5,8 +5,8 @@ const List = require("../model/list");
 router.post("/addTask", async (req,res)=>{
     try{
 
-    const {title, body, email} = req.body;
-    const existingUser = await User.findOne({ email });
+    const {title, body, id} = req.body;
+    const existingUser = await User.findById({ id });
     if(existingUser){
         const list = new List({
             title,body,user:existingUser
@@ -41,9 +41,9 @@ router.put("/updateTask/:id", async (req, res)=>{
 // Delete
 router.delete("/deleteTask/:id", async (req,res)=>{
     try{
-        const {title, body, email} = req.body;
-        const existingUser = await User.findOneAndUpdate(
-            {email},
+        const { id } = req.body;
+        const existingUser = await User.findByIdAndUpdate(
+            id,
             {$pull:{List:req.params.id}
         }
         );
@@ -58,17 +58,22 @@ router.delete("/deleteTask/:id", async (req,res)=>{
 
 
 // Get by id
-router.get("/GetTask/:id",async (req,res)=>{
-    try{
-        const list = await List.find({user: req.params.id}).sort({createdAt: -1});
-        if(list.length !== 0){
-            return res.status(200).json({list:list});
-        }else{
-            return res.status(200).json({list:"No Task"});
-        }
-    } catch (error){
-        console.log(error,"error in get by id")
+router.get("/GetTask/:id", async (req, res) => {
+    try {
+        console.log(req.params.id)
+      const list = await List.find()
+
+      console.log(list)
+      if (!list || list.length === 0) {
+        return res.status(200).json({ list: [] }); // Always return an array, not a string
+      }
+  
+      return res.status(200).json({ list }); // { list: [...] }
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+      return res.status(500).json({ message: "Internal server error" });
     }
-})
+  });
+  
 
 module.exports = router
