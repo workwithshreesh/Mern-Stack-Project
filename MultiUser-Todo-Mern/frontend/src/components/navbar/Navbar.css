@@ -1,0 +1,35 @@
+/* Navbar brand color */
+.navbar-brand {
+    color: rgba(240, 0, 0, 0.87);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* Auth button style */
+.auth-btn {
+    background-color: rgba(240, 0, 0, 0.87);
+    color: white !important;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 3px 5px;
+    padding: 6px 12px;
+    transition: background-color 0.3s ease;
+}
+
+.auth-btn:hover {
+    background-color: rgba(200, 0, 0, 0.87);
+    text-decoration: none;
+}
+
+/* Optional: Profile image */
+.profile-image {
+    height: 30px;
+    margin: 0 5px;
+    border-radius: 50%;
+}
+
+/* Unused textarea (can be removed if not used) */
+#textarea {
+    display: none;
+}
