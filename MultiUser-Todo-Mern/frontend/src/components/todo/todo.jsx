@@ -31,7 +31,7 @@ const Todo = () => {
     if (parsedUser) {
       try {
         const response = await axios.post("/v2/addTask", { ...newTask, id: userId });
-        setTasks([...tasks, response.data.task]); // Assuming server returns the saved task
+        setTasks([...tasks, response.data.list]); // Assuming server returns the saved task
         toast.success("Task added successfully!");
       } catch (error) {
         toast.error(error?.response?.data?.message || "Error adding task");
@@ -70,14 +70,15 @@ const Todo = () => {
 
   useEffect(() => {
     const loadTasks = async () => {
-      if (!parsedUser) {
+      if (parsedUser) {
         const saved = localStorage.getItem("tasks");
+        console.log("saved",saved)
         if (saved) setTasks(JSON.parse(saved));
       } else {
         try {
             console.log(userId)
           const res = await axios.get(`/v2/GetTask/${userId}`);
-          setTasks(res.data.tasks); // assuming your API returns tasks in `data.tasks`
+          setTasks(res.data.list); // assuming your API returns tasks in `data.tasks`
         } catch (err) {
           toast.error(err?.response?.data?.message || "Failed to fetch tasks");
         }
