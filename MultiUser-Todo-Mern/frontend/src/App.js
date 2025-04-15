@@ -53,7 +53,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
+    <div className="">
       <Router>
         <Navbar />
         <Routes>

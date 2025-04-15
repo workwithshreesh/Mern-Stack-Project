@@ -6,7 +6,7 @@ router.post("/addTask", async (req,res)=>{
     try{
 
     const {title, body, id} = req.body;
-    const existingUser = await User.findById({ id });
+    const existingUser = await User.findById(id);
     if(existingUser){
         const list = new List({
             title,body,user:existingUser
@@ -25,9 +25,8 @@ router.post("/addTask", async (req,res)=>{
 // Update
 router.put("/updateTask/:id", async (req, res)=>{
     try{
-        const {title, body, email} = req.body;
-        const existingUser = await User.findOne({email});
-
+        const {title, body, id} = req.body;
+        const existingUser = await User.findById(id);
         if(existingUser){
             const list = await List.findByIdAndUpdate(req.params.id,{title,body});
             list.save().then(()=>res.status(200).json({"message":"Task Updated"}));
@@ -60,10 +59,8 @@ router.delete("/deleteTask/:id", async (req,res)=>{
 // Get by id
 router.get("/GetTask/:id", async (req, res) => {
     try {
-        console.log(req.params.id)
       const list = await List.find()
 
-      console.log(list)
       if (!list || list.length === 0) {
         return res.status(200).json({ list: [] }); // Always return an array, not a string
       }

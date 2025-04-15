@@ -74,7 +74,7 @@ const SignIn = () => {
                                 value={Input.password}
                             />
 
-                            <button className="btn-signup p-2" onClick={submit}>Sign Up</button>
+                            <button className="btn-signup p-2" onClick={submit}>Sign In</button>
                         </div>
                     </div>
                 </div>
