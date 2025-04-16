@@ -36,7 +36,7 @@
 
 /* Sign up button */
 .btn-signup {
-    background-color: rgba(240, 0, 0, 0.87);;
+    background-color: rgba(240, 0, 0, 0.87);
     color: #ffffff;
     font-size: 16px;
     font-weight: 600;
@@ -48,4 +48,12 @@
 
 .btn-signup:hover {
     background-color: #0056b3;
+}
+
+
+.text-color{
+    color: rgba(240, 0, 0, 0.87);
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
 }
